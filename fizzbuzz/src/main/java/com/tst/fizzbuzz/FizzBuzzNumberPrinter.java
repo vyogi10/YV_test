@@ -3,6 +3,7 @@ package com.tst.fizzbuzz;
 import java.util.stream.IntStream;
 
 public class FizzBuzzNumberPrinter {
+    private static final String INVALID_INPUT = "invalid input";
     /*Words for single digit number*/
     private static final String[] singleDigitWord = {
             "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
@@ -26,6 +27,10 @@ public class FizzBuzzNumberPrinter {
     }
 
     public void fizzBuzz(int num) {
+        if (num < 1 || num > 100) {
+            System.out.println(INVALID_INPUT);
+            return;
+        }
         IntStream.rangeClosed(num, num)
             .mapToObj(i -> i % 5 == 0 ? (i % 3 == 0 ? "FizzBuzz" : "Buzz") : (i % 3 == 0 ? "Fizz" : processNumber(i)))
             .forEach(System.out::println);

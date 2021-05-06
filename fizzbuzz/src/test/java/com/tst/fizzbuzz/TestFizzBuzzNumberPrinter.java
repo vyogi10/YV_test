@@ -52,6 +52,13 @@ public class TestFizzBuzzNumberPrinter {
         assertEquals("FizzBuzz", outputStreamCaptor.toString().trim());
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, -3, -5, -15, 102, 105})
+    public void testInvalidInput(int number) {
+        classUnderTest.fizzBuzz(number);
+        assertEquals("invalid input", outputStreamCaptor.toString().trim());
+    }
+
     /*Arguments for all non 5 and 3 divisible numbers with expected output string value*/
     private static Stream<Arguments> numbersOutputProvider() {
         return Stream.of(
